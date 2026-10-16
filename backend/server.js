@@ -1,7 +1,8 @@
+require("dotenv").config();
+
+const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
-require("dotenv").config();
 
 const taskRoutes = require("./routes/tasks");
 
@@ -35,6 +36,7 @@ async function startServer() {
     }
 
     await mongoose.connect(process.env.MONGODB_URI);
+
     console.log("MongoDB connected successfully");
 
     const PORT = process.env.PORT || 5000;
@@ -47,4 +49,5 @@ async function startServer() {
     process.exit(1);
   }
 }
+
 startServer();
